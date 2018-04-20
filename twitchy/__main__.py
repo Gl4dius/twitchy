@@ -197,7 +197,7 @@ def watch_channel(mode, database_search=None):
 
     final_selection = twitchy_display.GenerateWatchTable(
         channels_online).begin()
-    print(' q / Ctrl + C to quit \n Now watching:')
+    #print(' q / Ctrl + C to quit \n Now watching:')
     twitchy_play.play_instance_generator(final_selection)
 
 

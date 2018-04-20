@@ -41,7 +41,10 @@ class Playtime:
         # This keeps the database from getting too cluttered
         display_name = self.channel_params['display_name']
         player = Options.video.player_final + f' --title {display_name}'
-        quality = Options.quality_map[self.channel_params['quality']]
+        #quality = Options.quality_map[self.channel_params['quality']]
+
+        subprocess.call(['streamlink twitch.tv/' + self.channel_name], shell=True)
+        quality = input(' Quality: ')
 
         # The following prints to the console
         # If ever there is going to be a curses version
@@ -50,7 +53,8 @@ class Playtime:
             print(' ' + Colors.WHITE +
                   self.channel_params['display_name'] + Colors.ENDC +
                   ' | ' + Colors.WHITE +
-                  self.channel_params['quality'].title() + Colors.ENDC)
+                  quality + Colors.ENDC)
+            print(' q / CTRL + C to quit')
 
         args_to_subprocess = (
             f"streamlink twitch.tv/{self.channel_name} {quality} --player '{player}'")
